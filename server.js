@@ -7,12 +7,12 @@ const mongoose = require('mongoose')
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("Connected to the database!");
+    console.log("Connected to the database!")
   })
   .catch(err => {
-    console.log("Cannot connect to the database!", err);
-    process.exit();
-  });
+    console.log("Cannot connect to the database!", err)
+    process.exit()
+  })
 
 const db = mongoose.connection
 
@@ -27,10 +27,10 @@ app.use(cors({
 app.use(express.json())
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }))
 
 const itemsRouter = require('./routes/items')
 app.use('/items', itemsRouter)
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`))
